@@ -1,38 +1,39 @@
 import { FC } from "react";
 import Body from "../../components/Body";
-import ThemeSelector from "../../components/ThemeSelector";
-import { Footer, Header, Main, Section, Title } from "./style";
+import { info, linkCategories } from "./data";
+import { InfoLabel, InfoValue, Main, Section } from "./style";
 
 const Homepage: FC = () => {
   return (
     <Body>
-      <Header>
-        <div></div>
-        <Title>
-          <b>ANDRÉ</b> P<b>A</b>NT<b>A</b>L<b>EÃO</b>
-        </Title>
-      </Header>
       <Main>
         <Section>
           <h3>Info</h3>
+          <ul>
+            {info.map(({ label, value }) => (
+              <li key={label + value}>
+                <InfoLabel>{label}</InfoLabel>
+                <InfoValue>{value}</InfoValue>
+              </li>
+            ))}
+          </ul>
         </Section>
         <Section>
           <h3>Links</h3>
-          <ul>
-            {Array(15)
-              .fill(null)
-              .map((_, i) => (
+          {linkCategories.map(({ label, links }) => (
+            <ul key={label}>
+              <h4>{label}</h4>
+              {links.map(({ label, href }) => (
                 <li>
-                  <a href="#">Item {i}</a>
+                  <a key={label + href} href={href} target="_blank">
+                    {label}
+                  </a>
                 </li>
               ))}
-          </ul>
+            </ul>
+          ))}
         </Section>
       </Main>
-      <Footer>
-        <div></div>
-        <ThemeSelector />
-      </Footer>
     </Body>
   );
 };

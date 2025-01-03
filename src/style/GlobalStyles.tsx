@@ -16,7 +16,6 @@ export const GlobalStyles = createGlobalStyle`
   html, body {
     background-color: ${(props) => props.theme.primaryColor};
     color: ${(props) => props.theme.secondaryColor};
-    height: 100%;
   }
 
   a {
@@ -34,9 +33,31 @@ export const GlobalStyles = createGlobalStyle`
       color: ${(props) => props.theme.primaryColor};
       font-weight: 900;
     }
+
+    &[target="_blank"]::after {
+      width: 0.6rem;
+      height: 0.6rem;
+      margin-left: 0.2rem;
+      margin-right: 0.1rem;
+      background-color: ${(props) => props.theme.secondaryColor};
+      display: inline-block;
+      content: "";
+      mask: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAoAAAAKCAYAAACNMs+9AAAAQElEQVR42qXKwQkAIAxDUUdxtO6/RBQkQZvSi8I/pL4BoGw/XPkh4XigPmsUgh0626AjRsgxHTkUThsG2T/sIlzdTsp52kSS1wAAAABJRU5ErkJggg==) no-repeat 50% 50%;
+      //mask: url(data:image/svg+xml;base64,PHN2ZyB2aWV3Qm94PSIwIDAgOCA4Ij48cGF0aCBkPSJNMCAwdjhoOHYtMmgtMXYxaC02di02aDF2LTFoLTJ6bTQgMGwxLjUgMS41LTIuNSAyLjUgMSAxIDIuNS0yLjUgMS41IDEuNXYtNGgtNHoiLz48L3N2Zz4=) no-repeat 50% 50%;
+      mask-size: cover;
+    }
+
+    &[target="_blank"]:active::after {
+      background-color: ${(props) => props.theme.primaryColor};
+    }
   }
 
   input {
     all: unset;
+  }
+
+  ::selection {
+    background-color: ${(props) => props.theme.secondaryColor};
+    color: ${(props) => props.theme.primaryColor};
   }
 `;

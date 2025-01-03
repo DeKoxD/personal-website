@@ -1,18 +1,6 @@
 import styled from "styled-components";
 import Frame from "../../components/Frame";
 
-export const Header = styled(Frame)`
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const Title = styled.span`
-  font-size: 25px;
-`;
-
 export const Main = styled.div`
   width: 100%;
   height: 100%;
@@ -20,7 +8,9 @@ export const Main = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
   @media (max-width: 600px) {
-    grid-template-columns: repeat(1, 1fr);
+    height: 100%;
+    grid-template-columns: auto;
+    grid-template-rows: auto 1fr;
   }
 `;
 
@@ -29,10 +19,13 @@ export const Section = styled(Frame)`
   flex-direction: column;
 `;
 
-export const Footer = styled(Frame)`
-  height: 50px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
+export const InfoLabel = styled.span`
+  font-weight: 600;
+
+  &::after {
+    content: ":";
+    margin-right: 0.2rem;
+  }
 `;
+
+export const InfoValue = styled.span``;
