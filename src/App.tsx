@@ -1,9 +1,9 @@
 import { useMemo } from "react";
 import Homepage from "./pages/Homepage";
-import { SelectedThemeProvider } from "./SelectedThemeProvider";
 import { GlobalStyles } from "./style/GlobalStyles";
-import { darkTheme, SystemTheme, ThemeOption } from "./theme";
 import { setCustomIcon } from "./utilities/IconGenerator";
+import { SelectedThemeProvider } from "./utilities/SelectedThemeProvider";
+import { darkTheme, SystemTheme, ThemeOption } from "./utilities/Theme";
 
 function App() {
   const theme = useMemo(() => {

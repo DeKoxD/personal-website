@@ -1,5 +1,5 @@
-import { getTheme, ThemeOption } from "../../theme";
 import { useSelectedTheme } from "../../useSelectedTheme";
+import { getTheme, ThemeOption } from "../../utilities/Theme";
 import {
   ButtonGrid,
   ColorPicker,

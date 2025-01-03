@@ -1,4 +1,4 @@
-import { getTheme, SystemTheme, ThemeOption } from "../theme";
+import { getTheme, SystemTheme, ThemeOption } from "./Theme";
 
 export function createIcon(
   text: string,

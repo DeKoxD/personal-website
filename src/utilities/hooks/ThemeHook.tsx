@@ -1,4 +1,4 @@
-import { SystemTheme, ThemeOption } from "./theme";
+import { SystemTheme, ThemeOption } from "../Theme";
 
 export interface ThemeHook {
   currentTheme: ThemeOption;

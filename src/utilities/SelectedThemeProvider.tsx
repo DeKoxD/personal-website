@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { SystemTheme, ThemeOption, getTheme } from "./theme";
+import { SystemTheme, ThemeOption, getTheme } from "./Theme";
 import { ThemeContext } from "./ThemeContext";
 
 export interface Props extends React.PropsWithChildren {
