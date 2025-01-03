@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, Fragment } from "react";
 import Body from "../../components/Body";
 import { info, linkCategories } from "./data";
 import { InfoLabel, InfoValue, Main, Section } from "./style";
@@ -20,8 +20,8 @@ const Homepage: FC = () => {
         </Section>
         <Section>
           <h3>Links</h3>
-          {linkCategories.map(({ label, links }) => (
-            <>
+          {linkCategories.flatMap(({ label, links }) => (
+            <Fragment key={label}>
               {linkCategories.length > 1 && <h4>{label}</h4>}
               <ul key={label}>
                 {links.map(({ label, href }) => (
@@ -32,7 +32,7 @@ const Homepage: FC = () => {
                   </li>
                 ))}
               </ul>
-            </>
+            </Fragment>
           ))}
         </Section>
       </Main>
