@@ -12,15 +12,11 @@ export const Wrapper = styled.div`
 export const Content = styled(Frame)`
   max-width: 700px;
   width: 100%;
-  height: 100%;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: auto 1fr auto;
   gap: 5px;
-
-  @media (max-width: 600px) {
-    min-height: 100vh;
-  }
 `;
 
 export const Header = styled(Frame)`
