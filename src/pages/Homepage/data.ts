@@ -13,8 +13,12 @@ export const linkCategories: LinkCategory[] = [
     label: "Personal",
     links: [
       {
+        label: "GitHub",
+        href: "https://github.com/DeKoxD",
+      },
+      {
         label: "Instagram",
-        href: "https://www.instagram.com/itzdeko/",
+        href: "https://www.instagram.com/itzdeko",
       },
       {
         label: "Bluesky",
@@ -25,15 +29,6 @@ export const linkCategories: LinkCategory[] = [
         href: "https://linkedin.com/in/pantaleaoandre",
       },
     ],
-  },
-  {
-    label: "TEST",
-    links: Array(10)
-      .fill(null)
-      .map((_, index) => ({
-        label: `Test ${index.toString().padStart(2, "0")}`,
-        href: "#",
-      })),
   },
 ];
 
@@ -48,7 +43,11 @@ export const info: InfoObject[] = [
     value: "André Pantaleão",
   },
   {
+    label: "Age",
+    value: (new Date().getFullYear() - 1993).toString(),
+  },
+  {
     label: "Location",
-    value: "Vila Nova de Gaia, Portugal",
+    value: "Porto, Portugal",
   },
 ];

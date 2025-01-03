@@ -1,8 +1,7 @@
 import { useContext } from "react";
-import { SystemTheme, ThemeOption } from "./theme";
-import { ThemeContext } from "./ThemeContext";
+import { SystemTheme, ThemeOption } from "../Theme";
+import { ThemeContext } from "../ThemeContext";
 import { ThemeHook } from "./ThemeHook";
-
 export const useSelectedTheme = (): ThemeHook => {
   const { currentTheme, setTheme, currentCustomTheme, setCustomTheme } =
     useContext(ThemeContext);

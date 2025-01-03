@@ -1,4 +1,4 @@
-import { useSelectedTheme } from "../../useSelectedTheme";
+import { useSelectedTheme } from "../../utilities/hooks/useSelectedTheme";
 import { getTheme, ThemeOption } from "../../utilities/Theme";
 import {
   ButtonGrid,

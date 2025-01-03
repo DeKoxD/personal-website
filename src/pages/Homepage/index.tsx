@@ -21,16 +21,18 @@ const Homepage: FC = () => {
         <Section>
           <h3>Links</h3>
           {linkCategories.map(({ label, links }) => (
-            <ul key={label}>
-              <h4>{label}</h4>
-              {links.map(({ label, href }) => (
-                <li key={label + href}>
-                  <a href={href} target="_blank">
-                    {label}
-                  </a>
-                </li>
-              ))}
-            </ul>
+            <>
+              {linkCategories.length > 1 && <h4>{label}</h4>}
+              <ul key={label}>
+                {links.map(({ label, href }) => (
+                  <li key={label + href}>
+                    <a href={href} target="_blank">
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </>
           ))}
         </Section>
       </Main>
