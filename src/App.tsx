@@ -3,6 +3,7 @@ import Homepage from "./pages/Homepage";
 import { SelectedThemeProvider } from "./SelectedThemeProvider";
 import { GlobalStyles } from "./style/GlobalStyles";
 import { darkTheme, SystemTheme, ThemeOption } from "./theme";
+import { setCustomIcon } from "./utilities/IconGenerator";
 
 function App() {
   const theme = useMemo(() => {
@@ -25,6 +26,7 @@ function App() {
     if (theme === ThemeOption.CUSTOM && customTheme) {
       localStorage.setItem("customTheme", JSON.stringify(customTheme));
     }
+    setCustomIcon(theme, customTheme);
   }
   return (
     <>

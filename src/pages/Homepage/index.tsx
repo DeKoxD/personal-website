@@ -24,8 +24,8 @@ const Homepage: FC = () => {
             <ul key={label}>
               <h4>{label}</h4>
               {links.map(({ label, href }) => (
-                <li>
-                  <a key={label + href} href={href} target="_blank">
+                <li key={label + href}>
+                  <a href={href} target="_blank">
                     {label}
                   </a>
                 </li>
