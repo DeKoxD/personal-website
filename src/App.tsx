@@ -3,31 +3,28 @@ import Homepage from "./pages/Homepage";
 import { GlobalStyles } from "./style/GlobalStyles";
 import { setCustomIcon } from "./utilities/IconGenerator";
 import { SelectedThemeProvider } from "./utilities/SelectedThemeProvider";
-import { darkTheme, SystemTheme, ThemeOption } from "./utilities/Theme";
+import {
+  getLocalStorageCustomeTheme,
+  getLocalStorageThemeOption,
+  setLocalStorageCustomeTheme,
+  SystemTheme,
+  ThemeOption,
+} from "./utilities/Theme";
 
 function App() {
   const theme = useMemo(() => {
-    const value = localStorage.getItem("theme");
-    if (value) {
-      return ThemeOption[value as keyof typeof ThemeOption];
-    }
+    return getLocalStorageThemeOption();
   }, []);
 
   const customTheme = useMemo(() => {
-    const value = localStorage.getItem("customTheme");
-    if (value) {
-      return JSON.parse(value);
-    }
-    return darkTheme;
+    return getLocalStorageCustomeTheme();
   }, []);
 
   function onThemeChange(theme: ThemeOption, customTheme?: SystemTheme) {
-    localStorage.setItem("theme", theme.toString());
-    if (theme === ThemeOption.CUSTOM && customTheme) {
-      localStorage.setItem("customTheme", JSON.stringify(customTheme));
-    }
+    setLocalStorageCustomeTheme(theme, customTheme);
     setCustomIcon(theme, customTheme);
   }
+
   return (
     <>
       <SelectedThemeProvider

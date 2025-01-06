@@ -22,6 +22,11 @@ export const lightTheme: SystemTheme = {
   secondaryColor: "#000000",
 };
 
+export enum ColorScheme {
+  DARK,
+  LIGHT,
+}
+
 export function getTheme(
   selectedTheme: ThemeOption,
   customTheme?: SystemTheme
@@ -52,4 +57,30 @@ export function getThemeOption(theme: SystemTheme | DefaultTheme): ThemeOption {
       return ThemeOption.LIGHT;
   }
   return ThemeOption.SYSTEM;
+}
+
+export function getLocalStorageThemeOption(): ThemeOption | undefined {
+  const value = localStorage.getItem("theme");
+  if (value) {
+    return ThemeOption[value as keyof typeof ThemeOption];
+  }
+  return ThemeOption.SYSTEM;
+}
+
+export function getLocalStorageCustomeTheme() {
+  const value = localStorage.getItem("customTheme");
+  if (value) {
+    return JSON.parse(value);
+  }
+  getTheme(ThemeOption.SYSTEM);
+}
+
+export function setLocalStorageCustomeTheme(
+  theme: ThemeOption,
+  customTheme?: SystemTheme
+) {
+  localStorage.setItem("theme", theme.toString());
+  if (theme === ThemeOption.CUSTOM && customTheme) {
+    localStorage.setItem("customTheme", JSON.stringify(customTheme));
+  }
 }
