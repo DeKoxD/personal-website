@@ -39,7 +39,6 @@ export const SelectedThemeProvider: React.FC<Props> = ({
 
   useEffect(() => {
     onChange?.(theme, customTheme);
-    console.log("change");
   }, [theme, customTheme, onChange, preferedColorScheme]);
 
   return (
