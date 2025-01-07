@@ -36,6 +36,12 @@ export const InputLabel = styled.label`
 `;
 
 export const ColorPicker = styled.input`
-  height: 30px;
-  width: 30px;
+  border: 1px solid ${(props) => props.theme.secondaryColor};
+  height: 20px;
+  width: 20px;
+  &:hover {
+    font-weight: 900;
+    background-color: ${(props) => props.theme.secondaryColor};
+    color: ${(props) => props.theme.primaryColor};
+  }
 `;

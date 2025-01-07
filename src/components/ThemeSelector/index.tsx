@@ -57,25 +57,25 @@ function ThemeSelector() {
       <span>Theme:</span>
       <ButtonGrid>
         <ThemeButton
-          className={currentTheme == ThemeOption.DARK ? "active" : ""}
+          $active={currentTheme == ThemeOption.DARK}
           onClick={setDarkMode}
         >
           D
         </ThemeButton>
         <ThemeButton
-          className={currentTheme == ThemeOption.LIGHT ? "active" : ""}
+          $active={currentTheme == ThemeOption.LIGHT}
           onClick={setLightMode}
         >
           L
         </ThemeButton>
         <ThemeButton
-          className={currentTheme == ThemeOption.SYSTEM ? "active" : ""}
+          $active={currentTheme == ThemeOption.SYSTEM}
           onClick={setSystemDefault}
         >
           S
         </ThemeButton>
         <ThemeButton
-          className={currentTheme == ThemeOption.CUSTOM ? "active" : ""}
+          $active={currentTheme == ThemeOption.CUSTOM}
           onClick={() => setCustom()}
         >
           C

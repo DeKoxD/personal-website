@@ -1,6 +1,10 @@
-import styled from "styled-components";
+import styled, { WebTarget } from "styled-components";
 
-const Button = styled.button`
+export type ButtonProps = {
+  $active?: boolean;
+} & WebTarget;
+
+const Button = styled.button<ButtonProps>`
   all: unset;
   :focus {
     outline: revert;
@@ -14,10 +18,11 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  &.active {
-    background-color: ${(props) => props.theme.secondaryColor};
-    color: ${(props) => props.theme.primaryColor};
-  }
+  ${(props) =>
+    props.$active && {
+      backgroundColor: props.theme.secondaryColor,
+      color: props.theme.primaryColor,
+    }}
 `;
 
 export default Button;
