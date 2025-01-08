@@ -4,6 +4,7 @@ import { GlobalStyles } from "./style/GlobalStyles";
 import { setCustomIcon } from "./utilities/IconGenerator";
 import { SelectedThemeProvider } from "./utilities/SelectedThemeProvider";
 import {
+  darkTheme,
   getLocalStorageCustomeTheme,
   getLocalStorageThemeOption,
   setLocalStorageCustomeTheme,
@@ -16,8 +17,8 @@ function App() {
     return getLocalStorageThemeOption();
   }, []);
 
-  const customTheme = useMemo(() => {
-    return getLocalStorageCustomeTheme();
+  const defaultCustomTheme = useMemo(() => {
+    return getLocalStorageCustomeTheme() || darkTheme;
   }, []);
 
   function onThemeChange(theme: ThemeOption, customTheme?: SystemTheme) {
@@ -29,7 +30,7 @@ function App() {
     <>
       <SelectedThemeProvider
         defaultValue={theme}
-        defaultCustomTheme={customTheme}
+        defaultCustomTheme={defaultCustomTheme}
         onChange={onThemeChange}
       >
         <GlobalStyles />

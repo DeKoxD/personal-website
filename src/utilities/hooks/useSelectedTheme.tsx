@@ -12,7 +12,7 @@ export const useSelectedTheme = (): ThemeHook => {
     setDarkMode: () => setTheme(ThemeOption.DARK),
     setLightMode: () => setTheme(ThemeOption.LIGHT),
     setSystemDefault: () => setTheme(ThemeOption.SYSTEM),
-    setCustom: (customeTheme: SystemTheme) => {
+    setCustom: (customeTheme?: SystemTheme) => {
       setTheme(ThemeOption.CUSTOM);
       if (customeTheme) {
         setCustomTheme(customeTheme);
