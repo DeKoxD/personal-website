@@ -1,4 +1,5 @@
-import { useSelectedTheme } from "../../utilities/hooks/useSelectedTheme";
+import { useSelectedTheme } from "../../utilities/hooks/SelectedTheme";
+import { useToastNotification } from "../../utilities/hooks/ToastNotificationHook";
 import { getTheme, ThemeOption } from "../../utilities/Theme";
 import {
   ButtonGrid,
@@ -18,6 +19,9 @@ function ThemeSelector() {
     setSystemDefault,
     setCustom,
   } = useSelectedTheme();
+
+  const { newNotification } = useToastNotification();
+
   return (
     <Wrapper>
       {currentTheme === ThemeOption.CUSTOM && (
@@ -58,25 +62,37 @@ function ThemeSelector() {
       <ButtonGrid>
         <ThemeButton
           $active={currentTheme == ThemeOption.DARK}
-          onClick={setDarkMode}
+          onClick={() => {
+            setDarkMode();
+            newNotification("Dark theme applied");
+          }}
         >
           D
         </ThemeButton>
         <ThemeButton
           $active={currentTheme == ThemeOption.LIGHT}
-          onClick={setLightMode}
+          onClick={() => {
+            setLightMode();
+            newNotification("Light theme applied");
+          }}
         >
           L
         </ThemeButton>
         <ThemeButton
           $active={currentTheme == ThemeOption.SYSTEM}
-          onClick={setSystemDefault}
+          onClick={() => {
+            setSystemDefault();
+            newNotification("System theme applied");
+          }}
         >
           S
         </ThemeButton>
         <ThemeButton
           $active={currentTheme == ThemeOption.CUSTOM}
-          onClick={() => setCustom()}
+          onClick={() => {
+            setCustom();
+            newNotification("Custom theme applied");
+          }}
         >
           C
         </ThemeButton>

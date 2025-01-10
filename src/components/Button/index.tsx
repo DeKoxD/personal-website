@@ -6,6 +6,13 @@ export type ButtonProps = {
 
 const Button = styled.button<ButtonProps>`
   all: unset;
+  pointer-events: all;
+  background-color: ${(props) => props.theme.primaryColor};
+  color: ${(props) => props.theme.secondaryColor};
+  border: 1px solid ${(props) => props.theme.secondaryColor};
+  display: flex;
+  justify-content: center;
+  align-items: center;
   :focus {
     outline: revert;
   }
@@ -14,10 +21,6 @@ const Button = styled.button<ButtonProps>`
     background-color: ${(props) => props.theme.secondaryColor};
     color: ${(props) => props.theme.primaryColor};
   }
-  border: 1px solid ${(props) => props.theme.secondaryColor};
-  display: flex;
-  justify-content: center;
-  align-items: center;
   ${(props) =>
     props.$active && {
       backgroundColor: props.theme.secondaryColor,

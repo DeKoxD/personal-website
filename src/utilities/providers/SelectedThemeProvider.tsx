@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { ThemeProvider } from "styled-components";
-import { ColorScheme, SystemTheme, ThemeOption, getTheme } from "./Theme";
-import { ThemeContext } from "./ThemeContext";
+import { ColorScheme, SystemTheme, ThemeOption, getTheme } from "../Theme";
+import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface Props extends React.PropsWithChildren {
   defaultValue?: ThemeOption;
@@ -9,7 +9,7 @@ export interface Props extends React.PropsWithChildren {
   onChange?: (value: ThemeOption, customTheme?: SystemTheme) => void;
 }
 
-export const SelectedThemeProvider: React.FC<Props> = ({
+const SelectedThemeProvider: React.FC<Props> = ({
   children,
   defaultValue = ThemeOption.SYSTEM,
   defaultCustomTheme,
@@ -56,3 +56,5 @@ export const SelectedThemeProvider: React.FC<Props> = ({
     </ThemeContext.Provider>
   );
 };
+
+export default SelectedThemeProvider;
