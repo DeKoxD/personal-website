@@ -63,8 +63,10 @@ function ThemeSelector() {
         <ThemeButton
           $active={currentTheme == ThemeOption.DARK}
           onClick={() => {
-            setDarkMode();
-            newNotification("Dark theme applied");
+            if (currentTheme != ThemeOption.DARK) {
+              setDarkMode();
+              newNotification("Dark theme applied");
+            }
           }}
         >
           D
@@ -72,8 +74,10 @@ function ThemeSelector() {
         <ThemeButton
           $active={currentTheme == ThemeOption.LIGHT}
           onClick={() => {
-            setLightMode();
-            newNotification("Light theme applied");
+            if (currentTheme != ThemeOption.LIGHT) {
+              setLightMode();
+              newNotification("Light theme applied");
+            }
           }}
         >
           L
@@ -81,8 +85,10 @@ function ThemeSelector() {
         <ThemeButton
           $active={currentTheme == ThemeOption.SYSTEM}
           onClick={() => {
-            setSystemDefault();
-            newNotification("System theme applied");
+            if (currentTheme != ThemeOption.SYSTEM) {
+              setSystemDefault();
+              newNotification("System theme applied");
+            }
           }}
         >
           S
@@ -90,8 +96,10 @@ function ThemeSelector() {
         <ThemeButton
           $active={currentTheme == ThemeOption.CUSTOM}
           onClick={() => {
-            setCustom();
-            newNotification("Custom theme applied");
+            if (currentTheme != ThemeOption.CUSTOM) {
+              setCustom();
+              newNotification("Custom theme applied");
+            }
           }}
         >
           C
