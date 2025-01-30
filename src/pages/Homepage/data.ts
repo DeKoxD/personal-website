@@ -21,8 +21,12 @@ export const linkCategories: LinkCategory[] = [
         href: "https://www.instagram.com/itzdeko",
       },
       {
+        label: "YouTube",
+        href: "https://www.youtube.com/c/AndrePantaleao",
+      },
+      {
         label: "Bluesky",
-        href: "https://bsky.app/profile/deko.pntl.cc",
+        href: "https://bsky.app/profile/andre.pntl.cc",
       },
       {
         label: "LinkedIn",
@@ -48,6 +52,10 @@ export const info: InfoObject[] = [
   },
   {
     label: "Location",
-    value: "Porto, Portugal",
+    value: "Vila Nova de Gaia, Portugal",
+  },
+  {
+    label: "Profession",
+    value: "Software Engineer",
   },
 ];
