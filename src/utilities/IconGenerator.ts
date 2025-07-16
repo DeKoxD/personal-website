@@ -1,4 +1,5 @@
-import { getTheme, SystemTheme, ThemeOption } from "./Theme";
+import { DefaultTheme } from "styled-components";
+import { getTheme, ThemeOption } from "./Theme";
 
 export function createIcon(
   text: string,
@@ -25,7 +26,7 @@ export function createIcon(
   return ctx.canvas.toDataURL();
 }
 
-export function setCustomIcon(theme: ThemeOption, customTheme?: SystemTheme) {
+export function setCustomIcon(theme: ThemeOption, customTheme?: DefaultTheme) {
   const themeObject = getTheme(theme, customTheme);
   let link: HTMLLinkElement | null = document.querySelector("link[rel='icon']");
   if (!link) {

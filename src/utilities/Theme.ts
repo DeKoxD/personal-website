@@ -1,8 +1,11 @@
+import "styled-components";
 import { DefaultTheme } from "styled-components";
 
-export interface SystemTheme {
-  primaryColor: string;
-  secondaryColor: string;
+declare module "styled-components" {
+  export interface DefaultTheme {
+    primaryColor: string;
+    secondaryColor: string;
+  }
 }
 
 export enum ThemeOption {
@@ -12,12 +15,12 @@ export enum ThemeOption {
   CUSTOM = "CUSTOM",
 }
 
-export const darkTheme: SystemTheme = {
+export const darkTheme: DefaultTheme = {
   primaryColor: "#000000",
   secondaryColor: "#ffffff",
 };
 
-export const lightTheme: SystemTheme = {
+export const lightTheme: DefaultTheme = {
   primaryColor: "#ffffff",
   secondaryColor: "#000000",
 };
@@ -29,8 +32,8 @@ export enum ColorScheme {
 
 export function getTheme(
   selectedTheme: ThemeOption,
-  customTheme?: SystemTheme
-): SystemTheme {
+  customTheme?: DefaultTheme
+): DefaultTheme {
   switch (selectedTheme) {
     case ThemeOption.DARK:
       return darkTheme;
@@ -49,7 +52,7 @@ export function getTheme(
   }
 }
 
-export function getThemeOption(theme: SystemTheme | DefaultTheme): ThemeOption {
+export function getThemeOption(theme: DefaultTheme): ThemeOption {
   switch (theme) {
     case darkTheme:
       return ThemeOption.DARK;
@@ -77,7 +80,7 @@ export function getLocalStorageCustomeTheme() {
 
 export function setLocalStorageCustomeTheme(
   theme: ThemeOption,
-  customTheme?: SystemTheme
+  customTheme?: DefaultTheme
 ) {
   localStorage.setItem("theme", theme.toString());
   if (theme === ThemeOption.CUSTOM && customTheme) {

@@ -1,6 +1,6 @@
 import React from "react";
 import { ToastNotification } from "../../utilities/providers/ToastNotificationProvider";
-import { ClearButton, Item, List } from "./style";
+import { ClearButton, Item, List } from "./styles";
 
 export interface Props {
   notifications: ToastNotification[];

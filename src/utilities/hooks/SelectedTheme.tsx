@@ -1,14 +1,15 @@
 import { useContext } from "react";
-import { SystemTheme, ThemeOption } from "../Theme";
+import { DefaultTheme } from "styled-components";
+import { ThemeOption } from "../Theme";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface SelectedThemeHookOutput {
   currentTheme: ThemeOption;
-  currentCustomTheme?: SystemTheme;
+  currentCustomTheme?: DefaultTheme;
   setDarkMode(): void;
   setLightMode(): void;
   setSystemDefault(): void;
-  setCustom(customTheme?: SystemTheme): void;
+  setCustom(customTheme?: DefaultTheme): void;
 }
 
 export const useSelectedTheme = (): SelectedThemeHookOutput => {
@@ -21,7 +22,7 @@ export const useSelectedTheme = (): SelectedThemeHookOutput => {
     setDarkMode: () => setTheme(ThemeOption.DARK),
     setLightMode: () => setTheme(ThemeOption.LIGHT),
     setSystemDefault: () => setTheme(ThemeOption.SYSTEM),
-    setCustom: (customeTheme?: SystemTheme) => {
+    setCustom: (customeTheme?: DefaultTheme) => {
       setTheme(ThemeOption.CUSTOM);
       if (customeTheme) {
         setCustomTheme(customeTheme);

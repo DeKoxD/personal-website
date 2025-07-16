@@ -1,6 +1,6 @@
 import { FC, PropsWithChildren } from "react";
 import ThemeSelector from "../ThemeSelector";
-import { AltLetters, Content, Footer, Header, Title, Wrapper } from "./style";
+import { AltLetters, Content, Footer, Header, Title, Wrapper } from "./styles";
 
 const Body: FC<PropsWithChildren> = ({ children }) => {
   return (

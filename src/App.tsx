@@ -1,5 +1,6 @@
 import { useMemo } from "react";
-import Homepage from "./pages/Homepage";
+import { DefaultTheme } from "styled-components";
+import MainRouter from "./routes/MainRouter";
 import { GlobalStyles } from "./style/GlobalStyles";
 import { setCustomIcon } from "./utilities/IconGenerator";
 import SelectedThemeProvider from "./utilities/providers/SelectedThemeProvider";
@@ -9,7 +10,6 @@ import {
   getLocalStorageCustomeTheme,
   getLocalStorageThemeOption,
   setLocalStorageCustomeTheme,
-  SystemTheme,
   ThemeOption,
 } from "./utilities/Theme";
 
@@ -22,7 +22,7 @@ function App() {
     return getLocalStorageCustomeTheme() || darkTheme;
   }, []);
 
-  function onThemeChange(theme: ThemeOption, customTheme?: SystemTheme) {
+  function onThemeChange(theme: ThemeOption, customTheme?: DefaultTheme) {
     setLocalStorageCustomeTheme(theme, customTheme);
     setCustomIcon(theme, customTheme);
   }
@@ -36,7 +36,7 @@ function App() {
       >
         <ToastNotificationProvider>
           <GlobalStyles />
-          <Homepage />
+          <MainRouter />
         </ToastNotificationProvider>
       </SelectedThemeProvider>
     </>
