@@ -1,11 +1,12 @@
 import { createContext } from "react";
-import { SystemTheme, ThemeOption } from "../Theme";
+import { DefaultTheme } from "styled-components";
+import { ThemeOption } from "../Theme";
 
 export interface ThemeContextValue {
   currentTheme: ThemeOption;
   setTheme: (theme: ThemeOption) => void;
-  currentCustomTheme?: SystemTheme;
-  setCustomTheme: (customTheme: SystemTheme) => void;
+  currentCustomTheme?: DefaultTheme;
+  setCustomTheme: (customTheme: DefaultTheme) => void;
 }
 
 export const ThemeContext = createContext<ThemeContextValue>(

@@ -8,7 +8,7 @@ import {
   InputLabel,
   ThemeButton,
   Wrapper,
-} from "./style";
+} from "./styles";
 
 function ThemeSelector() {
   const {

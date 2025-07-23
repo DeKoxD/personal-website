@@ -1,12 +1,12 @@
 import { useEffect, useState } from "react";
-import { ThemeProvider } from "styled-components";
-import { ColorScheme, SystemTheme, ThemeOption, getTheme } from "../Theme";
+import { DefaultTheme, ThemeProvider } from "styled-components";
+import { ColorScheme, ThemeOption, getTheme } from "../Theme";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface Props extends React.PropsWithChildren {
   defaultValue?: ThemeOption;
-  defaultCustomTheme?: SystemTheme;
-  onChange?: (value: ThemeOption, customTheme?: SystemTheme) => void;
+  defaultCustomTheme?: DefaultTheme;
+  onChange?: (value: ThemeOption, customTheme?: DefaultTheme) => void;
 }
 
 const SelectedThemeProvider: React.FC<Props> = ({
@@ -16,7 +16,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
   onChange,
 }): React.ReactElement => {
   const [theme, setTheme] = useState<ThemeOption>(defaultValue);
-  const [customTheme, setCustomTheme] = useState<SystemTheme | undefined>(
+  const [customTheme, setCustomTheme] = useState<DefaultTheme | undefined>(
     defaultCustomTheme
   );
   const [preferedColorScheme, setPreferedColorScheme] = useState<ColorScheme>(
