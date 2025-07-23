@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
 `;
 
 export const Content = styled(Frame)`
-  max-width: 700px;
+  max-width: 1000px;
   width: 100%;
   min-height: 100dvh;
   display: grid;
