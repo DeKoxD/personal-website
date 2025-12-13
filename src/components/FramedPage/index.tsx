@@ -1,19 +1,27 @@
 import { FC, PropsWithChildren } from "react";
 import ThemeSelector from "../ThemeSelector";
-import { AltLetters, Content, Footer, Header, Title, Wrapper } from "./styles";
+import {
+  AltLetters,
+  Body,
+  Content,
+  Footer,
+  Header,
+  Title,
+  Wrapper,
+} from "./styles";
 
-const Body: FC<PropsWithChildren> = ({ children }) => {
+const FramedPage: FC<PropsWithChildren> = ({ children }) => {
   return (
     <Wrapper>
       <Content>
         <Header>
           <div></div>
-          <Title>
+          <Title href="/">
             ANDRÉ <AltLetters>P</AltLetters>A<AltLetters>NT</AltLetters>A
             <AltLetters>L</AltLetters>EÃO
           </Title>
         </Header>
-        {children}
+        <Body>{children}</Body>
         <Footer>
           <div></div>
           <ThemeSelector />
@@ -23,4 +31,4 @@ const Body: FC<PropsWithChildren> = ({ children }) => {
   );
 };
 
-export default Body;
+export default FramedPage;

@@ -1,16 +1,18 @@
 import { FC } from "react";
 import { Route, Switch } from "wouter";
-import Body from "../components/Body";
+import FramedPage from "../components/FramedPage";
 import Homepage from "../pages/Homepage";
+import Microblog from "../pages/Microblog";
 import NotFound from "../pages/NotFound";
 
 const FramedRouter: FC = () => (
-  <Body>
+  <FramedPage>
     <Switch>
       <Route path="/" component={Homepage} />
+      <Route path="/microblog" component={Microblog} />
       <Route component={NotFound} />
     </Switch>
-  </Body>
+  </FramedPage>
 );
 
 export default FramedRouter;

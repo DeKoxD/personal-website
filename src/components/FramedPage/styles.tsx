@@ -1,8 +1,8 @@
 import styled from "styled-components";
+import { Link } from "wouter";
 import Frame from "../Frame";
 
 export const Wrapper = styled.div`
-  width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -14,7 +14,7 @@ export const Content = styled(Frame)`
   width: 100%;
   min-height: 100dvh;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
   gap: 5px;
 `;
@@ -27,7 +27,8 @@ export const Header = styled(Frame)`
   justify-content: space-between;
 `;
 
-export const Title = styled.span`
+export const Title = styled(Link)`
+  text-decoration: none !important;
   font-size: 25px;
   font-weight: 700;
 `;
@@ -37,17 +38,9 @@ export const AltLetters = styled.span`
   font-weight: 200;
 `;
 
-export const Main = styled.div`
+export const Body = styled.div`
   width: 100%;
   height: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 5px;
-  @media (max-width: 600px) {
-    height: 100%;
-    grid-template-columns: auto;
-    grid-template-rows: auto 1fr;
-  }
 `;
 
 export const Footer = styled(Frame)`
