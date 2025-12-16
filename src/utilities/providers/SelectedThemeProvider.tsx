@@ -18,7 +18,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
   const [customTheme, setCustomTheme] = useState<DefaultTheme | undefined>(
     defaultCustomTheme
   );
-  const [preferedColorScheme, setPreferedColorScheme] = useState<ColorScheme>(
+  const [preferredColorScheme, setPreferredColorScheme] = useState<ColorScheme>(
     ColorScheme.DARK
   );
 
@@ -26,7 +26,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
     const mql = window.matchMedia("(prefers-color-scheme: light)");
 
     function eventListener(e: MediaQueryListEvent) {
-      setPreferedColorScheme(e.matches ? ColorScheme.LIGHT : ColorScheme.DARK);
+      setPreferredColorScheme(e.matches ? ColorScheme.LIGHT : ColorScheme.DARK);
     }
 
     mql.addEventListener("change", eventListener);
@@ -44,7 +44,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
       "--secondary-color",
       secondaryColor
     );
-  }, [theme, customTheme, onChange, preferedColorScheme]);
+  }, [theme, customTheme, onChange, preferredColorScheme]);
 
   return (
     <ThemeContext.Provider

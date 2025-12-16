@@ -1,10 +1,6 @@
 import { styled } from "@linaria/react";
 
-export type ButtonProps = {
-  $active?: boolean;
-};
-
-const Button = styled.button<ButtonProps>`
+const Button = styled.button`
   all: unset;
   pointer-events: all;
   background-color: var(--primary-color);
@@ -21,12 +17,10 @@ const Button = styled.button<ButtonProps>`
     background-color: var(--secondary-color);
     color: var(--primary-color);
   }
-  background-color: var(
-    --${(props) => (props.$active ? "primary-color" : "secondary-color")}
-  );
-  color: var(
-    --${(props) => (props.$active ? "secondary-color" : "primary-color")}
-  );
+  &[aria-checked="true"] {
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
+  }
 `;
 
 export default Button;

@@ -5,6 +5,7 @@ import { ThemeContext } from "../contexts/ThemeContext";
 export interface SelectedThemeHookOutput {
   currentTheme: ThemeOption;
   currentCustomTheme?: DefaultTheme;
+  setTheme(themeOption: ThemeOption): void;
   setDarkMode(): void;
   setLightMode(): void;
   setSystemDefault(): void;
@@ -18,13 +19,14 @@ export const useSelectedTheme = (): SelectedThemeHookOutput => {
   return {
     currentTheme,
     currentCustomTheme,
+    setTheme,
     setDarkMode: () => setTheme(ThemeOption.DARK),
     setLightMode: () => setTheme(ThemeOption.LIGHT),
     setSystemDefault: () => setTheme(ThemeOption.SYSTEM),
-    setCustom: (customeTheme?: DefaultTheme) => {
+    setCustom: (customTheme?: DefaultTheme) => {
       setTheme(ThemeOption.CUSTOM);
-      if (customeTheme) {
-        setCustomTheme(customeTheme);
+      if (customTheme) {
+        setCustomTheme(customTheme);
       }
     },
   };
