@@ -71,24 +71,28 @@ function ThemeSelector() {
       <span>Theme:</span>
       <ButtonGrid>
         <ThemeButton
+          role="radio"
           aria-checked={currentTheme == ThemeOption.DARK}
           onClick={handleThemeChange(ThemeOption.DARK)}
         >
           D
         </ThemeButton>
         <ThemeButton
+          role="radio"
           aria-checked={currentTheme == ThemeOption.LIGHT}
           onClick={handleThemeChange(ThemeOption.LIGHT)}
         >
           L
         </ThemeButton>
         <ThemeButton
+          role="radio"
           aria-checked={currentTheme == ThemeOption.SYSTEM}
           onClick={handleThemeChange(ThemeOption.SYSTEM)}
         >
           S
         </ThemeButton>
         <ThemeButton
+          role="radio"
           aria-checked={currentTheme == ThemeOption.CUSTOM}
           onClick={handleThemeChange(ThemeOption.CUSTOM)}
         >
