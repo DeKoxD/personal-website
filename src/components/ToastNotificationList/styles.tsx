@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@linaria/react";
 import Button from "../Button";
 
 export const List = styled.div`
@@ -16,8 +16,8 @@ export const List = styled.div`
 `;
 
 export const Item = styled.div`
-  background-color: ${(props) => props.theme.primaryColor};
-  border: 3px solid ${(props) => props.theme.secondaryColor};
+  background-color: var(--primary-color);
+  border: 3px solid var(--secondary-color);
   padding: 5px;
   width: 300px;
   display: flex;

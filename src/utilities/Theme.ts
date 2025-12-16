@@ -1,11 +1,6 @@
-import "styled-components";
-import { DefaultTheme } from "styled-components";
-
-declare module "styled-components" {
-  export interface DefaultTheme {
-    primaryColor: string;
-    secondaryColor: string;
-  }
+export interface DefaultTheme {
+  primaryColor: string;
+  secondaryColor: string;
 }
 
 export enum ThemeOption {

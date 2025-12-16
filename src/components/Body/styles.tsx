@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@linaria/react";
 import Frame from "../Frame";
 
 export const Wrapper = styled.div`

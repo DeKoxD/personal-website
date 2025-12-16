@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@linaria/react";
 import Frame from "../../components/Frame";
 
 export const Main = styled(Frame)`

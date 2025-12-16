@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
-import { ColorScheme, ThemeOption, getTheme } from "../Theme";
+import { ColorScheme, DefaultTheme, ThemeOption, getTheme } from "../Theme";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface Props extends React.PropsWithChildren {
@@ -39,6 +38,12 @@ const SelectedThemeProvider: React.FC<Props> = ({
 
   useEffect(() => {
     onChange?.(theme, customTheme);
+    const { primaryColor, secondaryColor } = getTheme(theme, customTheme);
+    document.documentElement.style.setProperty("--primary-color", primaryColor);
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      secondaryColor
+    );
   }, [theme, customTheme, onChange, preferedColorScheme]);
 
   return (
@@ -50,9 +55,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
         setCustomTheme,
       }}
     >
-      <ThemeProvider theme={getTheme(theme, customTheme)}>
-        {children}
-      </ThemeProvider>
+      {children}
     </ThemeContext.Provider>
   );
 };

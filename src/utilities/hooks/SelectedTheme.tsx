@@ -1,6 +1,5 @@
 import { useContext } from "react";
-import { DefaultTheme } from "styled-components";
-import { ThemeOption } from "../Theme";
+import { DefaultTheme, ThemeOption } from "../Theme";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface SelectedThemeHookOutput {
