@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
-import { DefaultTheme, ThemeProvider } from "styled-components";
-import { ColorScheme, ThemeOption, getTheme } from "../Theme";
+import { ColorScheme, DefaultTheme, ThemeOption, getTheme } from "../Theme";
 import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface Props extends React.PropsWithChildren {
@@ -19,7 +18,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
   const [customTheme, setCustomTheme] = useState<DefaultTheme | undefined>(
     defaultCustomTheme
   );
-  const [preferedColorScheme, setPreferedColorScheme] = useState<ColorScheme>(
+  const [preferredColorScheme, setPreferredColorScheme] = useState<ColorScheme>(
     ColorScheme.DARK
   );
 
@@ -27,7 +26,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
     const mql = window.matchMedia("(prefers-color-scheme: light)");
 
     function eventListener(e: MediaQueryListEvent) {
-      setPreferedColorScheme(e.matches ? ColorScheme.LIGHT : ColorScheme.DARK);
+      setPreferredColorScheme(e.matches ? ColorScheme.LIGHT : ColorScheme.DARK);
     }
 
     mql.addEventListener("change", eventListener);
@@ -39,7 +38,13 @@ const SelectedThemeProvider: React.FC<Props> = ({
 
   useEffect(() => {
     onChange?.(theme, customTheme);
-  }, [theme, customTheme, onChange, preferedColorScheme]);
+    const { primaryColor, secondaryColor } = getTheme(theme, customTheme);
+    document.documentElement.style.setProperty("--primary-color", primaryColor);
+    document.documentElement.style.setProperty(
+      "--secondary-color",
+      secondaryColor
+    );
+  }, [theme, customTheme, onChange, preferredColorScheme]);
 
   return (
     <ThemeContext.Provider
@@ -50,9 +55,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
         setCustomTheme,
       }}
     >
-      <ThemeProvider theme={getTheme(theme, customTheme)}>
-        {children}
-      </ThemeProvider>
+      {children}
     </ThemeContext.Provider>
   );
 };

@@ -1,6 +1,5 @@
 import { createContext } from "react";
-import { DefaultTheme } from "styled-components";
-import { ThemeOption } from "../Theme";
+import { DefaultTheme, ThemeOption } from "../Theme";
 
 export interface ThemeContextValue {
   currentTheme: ThemeOption;

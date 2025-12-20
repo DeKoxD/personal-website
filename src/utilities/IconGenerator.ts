@@ -1,5 +1,4 @@
-import { DefaultTheme } from "styled-components";
-import { getTheme, ThemeOption } from "./Theme";
+import { DefaultTheme, getTheme, ThemeOption } from "./Theme";
 
 export function createIcon(
   text: string,

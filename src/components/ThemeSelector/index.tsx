@@ -10,17 +10,27 @@ import {
   Wrapper,
 } from "./styles";
 
+const popUpMessages = {
+  [ThemeOption.DARK]: "Dark theme applied",
+  [ThemeOption.LIGHT]: "Light theme applied",
+  [ThemeOption.SYSTEM]: "System theme applied",
+  [ThemeOption.CUSTOM]: "Custom theme applied",
+};
+
 function ThemeSelector() {
-  const {
-    currentTheme,
-    currentCustomTheme,
-    setDarkMode,
-    setLightMode,
-    setSystemDefault,
-    setCustom,
-  } = useSelectedTheme();
+  const { currentTheme, currentCustomTheme, setTheme, setCustom } =
+    useSelectedTheme();
 
   const { newNotification } = useToastNotification();
+
+  const handleThemeChange = (themeOption: ThemeOption) => {
+    const message = popUpMessages[themeOption];
+    if (themeOption === currentTheme || !message) return;
+    return () => {
+      setTheme(themeOption);
+      newNotification(message);
+    };
+  };
 
   return (
     <Wrapper>
@@ -61,46 +71,30 @@ function ThemeSelector() {
       <span>Theme:</span>
       <ButtonGrid>
         <ThemeButton
-          $active={currentTheme == ThemeOption.DARK}
-          onClick={() => {
-            if (currentTheme != ThemeOption.DARK) {
-              setDarkMode();
-              newNotification("Dark theme applied");
-            }
-          }}
+          role="radio"
+          aria-checked={currentTheme == ThemeOption.DARK}
+          onClick={handleThemeChange(ThemeOption.DARK)}
         >
           D
         </ThemeButton>
         <ThemeButton
-          $active={currentTheme == ThemeOption.LIGHT}
-          onClick={() => {
-            if (currentTheme != ThemeOption.LIGHT) {
-              setLightMode();
-              newNotification("Light theme applied");
-            }
-          }}
+          role="radio"
+          aria-checked={currentTheme == ThemeOption.LIGHT}
+          onClick={handleThemeChange(ThemeOption.LIGHT)}
         >
           L
         </ThemeButton>
         <ThemeButton
-          $active={currentTheme == ThemeOption.SYSTEM}
-          onClick={() => {
-            if (currentTheme != ThemeOption.SYSTEM) {
-              setSystemDefault();
-              newNotification("System theme applied");
-            }
-          }}
+          role="radio"
+          aria-checked={currentTheme == ThemeOption.SYSTEM}
+          onClick={handleThemeChange(ThemeOption.SYSTEM)}
         >
           S
         </ThemeButton>
         <ThemeButton
-          $active={currentTheme == ThemeOption.CUSTOM}
-          onClick={() => {
-            if (currentTheme != ThemeOption.CUSTOM) {
-              setCustom();
-              newNotification("Custom theme applied");
-            }
-          }}
+          role="radio"
+          aria-checked={currentTheme == ThemeOption.CUSTOM}
+          onClick={handleThemeChange(ThemeOption.CUSTOM)}
         >
           C
         </ThemeButton>

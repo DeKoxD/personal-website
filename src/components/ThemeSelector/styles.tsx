@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import { styled } from "@linaria/react";
 import Button from "../Button";
 
 export const Wrapper = styled.div`
@@ -36,12 +36,12 @@ export const InputLabel = styled.label`
 `;
 
 export const ColorPicker = styled.input`
-  border: 1px solid ${(props) => props.theme.secondaryColor};
+  border: 1px solid var(--secondary-color);
   height: 20px;
   width: 20px;
   &:hover {
     font-weight: 900;
-    background-color: ${(props) => props.theme.secondaryColor};
-    color: ${(props) => props.theme.primaryColor};
+    background-color: var(--secondary-color);
+    color: var(--primary-color);
   }
 `;
