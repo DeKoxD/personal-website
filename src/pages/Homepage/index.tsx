@@ -1,10 +1,10 @@
 import { FC, Fragment } from "react";
 import { info, linkCategories } from "./data";
-import { InfoLabel, InfoValue, Main, Section } from "./styles";
+import { Content, InfoLabel, InfoValue, Section } from "./styles";
 
 const Homepage: FC = () => {
   return (
-    <Main>
+    <Content>
       <Section>
         <h3>Info</h3>
         <ul>
@@ -33,7 +33,7 @@ const Homepage: FC = () => {
           </Fragment>
         ))}
       </Section>
-    </Main>
+    </Content>
   );
 };
 

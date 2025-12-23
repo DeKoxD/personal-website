@@ -1,7 +1,7 @@
 import { styled } from "@linaria/react";
-import Frame from "../../components/Frame";
+import { FramedSection } from "../../style/framedComponents";
 
-export const Main = styled.div`
+export const Content = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -14,7 +14,7 @@ export const Main = styled.div`
   }
 `;
 
-export const Section = styled(Frame)`
+export const Section = styled(FramedSection)`
   display: flex;
   flex-direction: column;
 `;

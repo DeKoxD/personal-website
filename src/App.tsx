@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import MainRouter from "./routes/MainRouter";
-import { globalStyles } from "./style/GlobalStyles";
+import { globalStyles } from "./style/globalStyles";
 import { setCustomIcon } from "./utilities/IconGenerator";
 import SelectedThemeProvider from "./utilities/providers/SelectedThemeProvider";
 import ToastNotificationProvider from "./utilities/providers/ToastNotificationProvider";

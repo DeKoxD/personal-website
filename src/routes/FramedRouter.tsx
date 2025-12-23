@@ -1,16 +1,16 @@
 import { FC } from "react";
 import { Route, Switch } from "wouter";
-import Body from "../components/Body";
+import FramedBody from "../components/FramedBody";
 import Homepage from "../pages/Homepage";
 import NotFound from "../pages/NotFound";
 
 const FramedRouter: FC = () => (
-  <Body>
+  <FramedBody>
     <Switch>
       <Route path="/" component={Homepage} />
       <Route component={NotFound} />
     </Switch>
-  </Body>
+  </FramedBody>
 );
 
 export default FramedRouter;

@@ -1,11 +1,11 @@
 import { FC } from "react";
-import { Main } from "./styles";
+import { Content } from "./styles";
 
 const NotFound: FC = () => {
   return (
-    <Main>
+    <Content>
       <h2>Page Not Found</h2>
-    </Main>
+    </Content>
   );
 };
 
