@@ -1,6 +1,6 @@
-import { useSelectedTheme } from "../../utilities/hooks/SelectedTheme";
-import { useToastNotification } from "../../utilities/hooks/ToastNotificationHook";
-import { getTheme, ThemeOption } from "../../utilities/Theme";
+import { useSelectedTheme } from "@/utilities/hooks/SelectedTheme";
+import { useToastNotification } from "@/utilities/hooks/ToastNotificationHook";
+import { getTheme, ThemeOption } from "@/utilities/Theme";
 import {
   ButtonGrid,
   ColorPicker,

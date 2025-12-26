@@ -1,5 +1,5 @@
+import { ToastNotificationContext } from "@/utilities/contexts/ToastNotificationContext";
 import { useContext } from "react";
-import { ToastNotificationContext } from "../contexts/ToastNotificationContext";
 
 export interface ToastNotificationHookOutput {
   newNotification(content: string): void;

@@ -1,6 +1,6 @@
+import FramedRouter from "@/routes/FramedRouter";
 import { FC } from "react";
 import { Route, Switch } from "wouter";
-import FramedRouter from "./FramedRouter";
 
 const MainRouter: FC = () => (
   <Switch>

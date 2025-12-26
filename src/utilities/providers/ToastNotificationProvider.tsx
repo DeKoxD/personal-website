@@ -1,6 +1,6 @@
+import ToastNotificationList from "@/components/ToastNotificationList";
+import { ToastNotificationContext } from "@/utilities/contexts/ToastNotificationContext";
 import { PropsWithChildren, useRef, useState } from "react";
-import ToastNotificationList from "../../components/ToastNotificationList";
-import { ToastNotificationContext } from "../contexts/ToastNotificationContext";
 
 export interface ToastNotification {
   id: number;

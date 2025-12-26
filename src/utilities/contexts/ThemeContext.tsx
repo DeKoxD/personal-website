@@ -1,5 +1,5 @@
+import { DefaultTheme, ThemeOption } from "@/utilities/Theme";
 import { createContext } from "react";
-import { DefaultTheme, ThemeOption } from "../Theme";
 
 export interface ThemeContextValue {
   currentTheme: ThemeOption;

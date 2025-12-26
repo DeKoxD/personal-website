@@ -1,4 +1,4 @@
-import { DefaultTheme, getTheme, ThemeOption } from "./Theme";
+import { DefaultTheme, getTheme, ThemeOption } from "@/utilities/Theme";
 
 export function createIcon(
   text: string,

@@ -1,6 +1,11 @@
+import {
+  ColorScheme,
+  DefaultTheme,
+  ThemeOption,
+  getTheme,
+} from "@/utilities/Theme";
+import { ThemeContext } from "@/utilities/contexts/ThemeContext";
 import { useEffect, useState } from "react";
-import { ColorScheme, DefaultTheme, ThemeOption, getTheme } from "../Theme";
-import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface Props extends React.PropsWithChildren {
   defaultValue?: ThemeOption;
