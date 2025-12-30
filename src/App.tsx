@@ -1,17 +1,17 @@
-import { useMemo } from "react";
-import MainRouter from "./routes/MainRouter";
-import { globalStyles } from "./style/globalStyles";
-import { setCustomIcon } from "./utilities/IconGenerator";
-import SelectedThemeProvider from "./utilities/providers/SelectedThemeProvider";
-import ToastNotificationProvider from "./utilities/providers/ToastNotificationProvider";
+import MainRouter from "@/routes/MainRouter";
+import { globalStyles } from "@/style/globalStyles";
+import { setCustomIcon } from "@/utilities/IconGenerator";
+import SelectedThemeProvider from "@/utilities/providers/SelectedThemeProvider";
+import ToastNotificationProvider from "@/utilities/providers/ToastNotificationProvider";
 import {
   darkTheme,
   DefaultTheme,
-  getLocalStorageCustomeTheme,
+  getLocalStorageCustomTheme,
   getLocalStorageThemeOption,
-  setLocalStorageCustomeTheme,
+  setLocalStorageCustomTheme,
   ThemeOption,
-} from "./utilities/Theme";
+} from "@/utilities/Theme";
+import { useMemo } from "react";
 
 function App() {
   const theme = useMemo(() => {
@@ -19,11 +19,11 @@ function App() {
   }, []);
 
   const defaultCustomTheme = useMemo(() => {
-    return getLocalStorageCustomeTheme() || darkTheme;
+    return getLocalStorageCustomTheme() || darkTheme;
   }, []);
 
   function onThemeChange(theme: ThemeOption, customTheme?: DefaultTheme) {
-    setLocalStorageCustomeTheme(theme, customTheme);
+    setLocalStorageCustomTheme(theme, customTheme);
     setCustomIcon(theme, customTheme);
   }
 

@@ -1,5 +1,5 @@
+import ThemeSelector from "@/components/ThemeSelector";
 import { FC, PropsWithChildren } from "react";
-import ThemeSelector from "../ThemeSelector";
 import {
   AltLetters,
   Content,

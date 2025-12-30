@@ -1,6 +1,6 @@
+import { DefaultTheme, ThemeOption } from "@/utilities/Theme";
+import { ThemeContext } from "@/utilities/contexts/ThemeContext";
 import { useContext } from "react";
-import { DefaultTheme, ThemeOption } from "../Theme";
-import { ThemeContext } from "../contexts/ThemeContext";
 
 export interface SelectedThemeHookOutput {
   currentTheme: ThemeOption;

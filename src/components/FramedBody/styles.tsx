@@ -1,5 +1,5 @@
+import { FramedDiv } from "@/style/framedComponents";
 import { styled } from "@linaria/react";
-import { FramedDiv } from "../../style/framedComponents";
 
 export const Wrapper = styled.div`
   width: 100vw;

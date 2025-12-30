@@ -1,5 +1,5 @@
+import { ToastNotification } from "@/utilities/providers/ToastNotificationProvider";
 import { createContext } from "react";
-import { ToastNotification } from "../providers/ToastNotificationProvider";
 
 export interface ToastNotificationContextValue {
   notifications: ToastNotification[];

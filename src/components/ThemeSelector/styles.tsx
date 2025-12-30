@@ -1,5 +1,5 @@
+import Button from "@/components/Button";
 import { styled } from "@linaria/react";
-import Button from "../Button";
 
 export const Wrapper = styled.div`
   display: flex;

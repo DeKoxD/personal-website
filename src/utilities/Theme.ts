@@ -65,7 +65,7 @@ export function getLocalStorageThemeOption(): ThemeOption | undefined {
   return ThemeOption.SYSTEM;
 }
 
-export function getLocalStorageCustomeTheme() {
+export function getLocalStorageCustomTheme() {
   const value = localStorage.getItem("customTheme");
   if (value) {
     return JSON.parse(value);
@@ -73,7 +73,7 @@ export function getLocalStorageCustomeTheme() {
   getTheme(ThemeOption.SYSTEM);
 }
 
-export function setLocalStorageCustomeTheme(
+export function setLocalStorageCustomTheme(
   theme: ThemeOption,
   customTheme?: DefaultTheme
 ) {

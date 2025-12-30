@@ -1,5 +1,5 @@
+import { FramedSection } from "@/style/framedComponents";
 import { styled } from "@linaria/react";
-import { FramedSection } from "../../style/framedComponents";
 
 export const Content = styled.div`
   width: 100%;
