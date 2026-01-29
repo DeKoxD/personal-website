@@ -1,13 +1,8 @@
+import { ThemeOption } from "./enums/ThemeOption";
+
 export interface DefaultTheme {
   primaryColor: string;
   secondaryColor: string;
-}
-
-export enum ThemeOption {
-  DARK = "DARK",
-  LIGHT = "LIGHT",
-  SYSTEM = "SYSTEM",
-  CUSTOM = "CUSTOM",
 }
 
 export const darkTheme: DefaultTheme = {
@@ -27,14 +22,14 @@ export enum ColorScheme {
 
 export function getTheme(
   selectedTheme: ThemeOption,
-  customTheme?: DefaultTheme
+  customTheme?: DefaultTheme,
 ): DefaultTheme {
   switch (selectedTheme) {
-    case ThemeOption.DARK:
+    case ThemeOption.Dark:
       return darkTheme;
-    case ThemeOption.LIGHT:
+    case ThemeOption.Light:
       return lightTheme;
-    case ThemeOption.SYSTEM:
+    case ThemeOption.System:
       if (
         window.matchMedia &&
         window.matchMedia("(prefers-color-scheme: light)").matches
@@ -42,19 +37,19 @@ export function getTheme(
         return lightTheme;
       }
       return darkTheme;
-    case ThemeOption.CUSTOM:
-      return customTheme || getTheme(ThemeOption.SYSTEM);
+    case ThemeOption.Custom:
+      return customTheme || getTheme(ThemeOption.System);
   }
 }
 
 export function getThemeOption(theme: DefaultTheme): ThemeOption {
   switch (theme) {
     case darkTheme:
-      return ThemeOption.DARK;
+      return ThemeOption.Dark;
     case lightTheme:
-      return ThemeOption.LIGHT;
+      return ThemeOption.Light;
   }
-  return ThemeOption.SYSTEM;
+  return ThemeOption.System;
 }
 
 export function getLocalStorageThemeOption(): ThemeOption | undefined {
@@ -62,7 +57,7 @@ export function getLocalStorageThemeOption(): ThemeOption | undefined {
   if (value) {
     return ThemeOption[value as keyof typeof ThemeOption];
   }
-  return ThemeOption.SYSTEM;
+  return ThemeOption.System;
 }
 
 export function getLocalStorageCustomTheme() {
@@ -70,15 +65,15 @@ export function getLocalStorageCustomTheme() {
   if (value) {
     return JSON.parse(value);
   }
-  getTheme(ThemeOption.SYSTEM);
+  getTheme(ThemeOption.System);
 }
 
 export function setLocalStorageCustomTheme(
   theme: ThemeOption,
-  customTheme?: DefaultTheme
+  customTheme?: DefaultTheme,
 ) {
   localStorage.setItem("theme", theme.toString());
-  if (theme === ThemeOption.CUSTOM && customTheme) {
+  if (theme === ThemeOption.Custom && customTheme) {
     localStorage.setItem("customTheme", JSON.stringify(customTheme));
   }
 }

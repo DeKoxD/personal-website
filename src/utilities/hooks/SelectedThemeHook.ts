@@ -1,6 +1,7 @@
-import { DefaultTheme, ThemeOption } from "@/utilities/Theme";
 import { ThemeContext } from "@/utilities/contexts/ThemeContext";
+import { DefaultTheme } from "@/utilities/Theme";
 import { useContext } from "react";
+import { ThemeOption } from "../enums/ThemeOption";
 
 export interface SelectedThemeHookOutput {
   currentTheme: ThemeOption;
@@ -20,11 +21,11 @@ export const useSelectedTheme = (): SelectedThemeHookOutput => {
     currentTheme,
     currentCustomTheme,
     setTheme,
-    setDarkMode: () => setTheme(ThemeOption.DARK),
-    setLightMode: () => setTheme(ThemeOption.LIGHT),
-    setSystemDefault: () => setTheme(ThemeOption.SYSTEM),
+    setDarkMode: () => setTheme(ThemeOption.Dark),
+    setLightMode: () => setTheme(ThemeOption.Light),
+    setSystemDefault: () => setTheme(ThemeOption.System),
     setCustom: (customTheme?: DefaultTheme) => {
-      setTheme(ThemeOption.CUSTOM);
+      setTheme(ThemeOption.Custom);
       if (customTheme) {
         setCustomTheme(customTheme);
       }

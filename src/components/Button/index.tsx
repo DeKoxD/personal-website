@@ -9,6 +9,8 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  font-weight: 600;
   :focus {
     outline: revert;
   }
@@ -20,6 +22,16 @@ const Button = styled.button`
   &[aria-checked="true"] {
     background-color: var(--secondary-color);
     color: var(--primary-color);
+  }
+  &:active {
+    border: 2px solid var(--primary-color);
+  }
+  &:focus-visible {
+    border: 2px dashed var(--secondary-color);
+    &:hover,
+    &[aria-checked="true"] {
+      border: 2px dashed var(--primary-color);
+    }
   }
 `;
 

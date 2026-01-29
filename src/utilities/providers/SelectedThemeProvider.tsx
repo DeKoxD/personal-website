@@ -1,11 +1,9 @@
-import {
-  ColorScheme,
-  DefaultTheme,
-  ThemeOption,
-  getTheme,
-} from "@/utilities/Theme";
 import { ThemeContext } from "@/utilities/contexts/ThemeContext";
+import { LocalStorageKey } from "@/utilities/enums/LocalStorageKeys";
+import { useLocalStorage } from "@/utilities/hooks/LocalStorageHook";
+import { ColorScheme, DefaultTheme, getTheme } from "@/utilities/Theme";
 import { useEffect, useState } from "react";
+import { ThemeOption } from "../enums/ThemeOption";
 
 export interface Props extends React.PropsWithChildren {
   defaultValue?: ThemeOption;
@@ -15,16 +13,19 @@ export interface Props extends React.PropsWithChildren {
 
 const SelectedThemeProvider: React.FC<Props> = ({
   children,
-  defaultValue = ThemeOption.SYSTEM,
+  defaultValue = ThemeOption.System,
   defaultCustomTheme,
   onChange,
 }): React.ReactElement => {
-  const [theme, setTheme] = useState<ThemeOption>(defaultValue);
-  const [customTheme, setCustomTheme] = useState<DefaultTheme | undefined>(
-    defaultCustomTheme
+  const [theme, setTheme] = useLocalStorage<ThemeOption>(
+    LocalStorageKey.Theme,
+    defaultValue,
   );
+  const [customTheme, setCustomTheme] = useLocalStorage<
+    DefaultTheme | undefined
+  >(LocalStorageKey.CustomTheme, defaultCustomTheme);
   const [preferredColorScheme, setPreferredColorScheme] = useState<ColorScheme>(
-    ColorScheme.DARK
+    ColorScheme.DARK,
   );
 
   useEffect(() => {
@@ -47,7 +48,7 @@ const SelectedThemeProvider: React.FC<Props> = ({
     document.documentElement.style.setProperty("--primary-color", primaryColor);
     document.documentElement.style.setProperty(
       "--secondary-color",
-      secondaryColor
+      secondaryColor,
     );
   }, [theme, customTheme, onChange, preferredColorScheme]);
 

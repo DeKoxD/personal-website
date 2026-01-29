@@ -1,6 +1,7 @@
-import { useSelectedTheme } from "@/utilities/hooks/SelectedTheme";
+import { ThemeOption } from "@/utilities/enums/ThemeOption";
+import { useSelectedTheme } from "@/utilities/hooks/SelectedThemeHook";
 import { useToastNotification } from "@/utilities/hooks/ToastNotificationHook";
-import { getTheme, ThemeOption } from "@/utilities/Theme";
+import { getTheme } from "@/utilities/Theme";
 import {
   ButtonGrid,
   ColorPicker,
@@ -11,10 +12,10 @@ import {
 } from "./styles";
 
 const popUpMessages = {
-  [ThemeOption.DARK]: "Dark theme applied",
-  [ThemeOption.LIGHT]: "Light theme applied",
-  [ThemeOption.SYSTEM]: "System theme applied",
-  [ThemeOption.CUSTOM]: "Custom theme applied",
+  [ThemeOption.Dark]: "Dark theme applied",
+  [ThemeOption.Light]: "Light theme applied",
+  [ThemeOption.System]: "System theme applied",
+  [ThemeOption.Custom]: "Custom theme applied",
 };
 
 function ThemeSelector() {
@@ -34,7 +35,7 @@ function ThemeSelector() {
 
   return (
     <Wrapper>
-      {currentTheme === ThemeOption.CUSTOM && (
+      {currentTheme === ThemeOption.Custom && (
         <CustomColorSelector>
           <InputLabel>
             P:
@@ -72,29 +73,29 @@ function ThemeSelector() {
       <ButtonGrid>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.DARK}
-          onClick={handleThemeChange(ThemeOption.DARK)}
+          aria-checked={currentTheme == ThemeOption.Dark}
+          onClick={handleThemeChange(ThemeOption.Dark)}
         >
           D
         </ThemeButton>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.LIGHT}
-          onClick={handleThemeChange(ThemeOption.LIGHT)}
+          aria-checked={currentTheme == ThemeOption.Light}
+          onClick={handleThemeChange(ThemeOption.Light)}
         >
           L
         </ThemeButton>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.SYSTEM}
-          onClick={handleThemeChange(ThemeOption.SYSTEM)}
+          aria-checked={currentTheme == ThemeOption.System}
+          onClick={handleThemeChange(ThemeOption.System)}
         >
           S
         </ThemeButton>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.CUSTOM}
-          onClick={handleThemeChange(ThemeOption.CUSTOM)}
+          aria-checked={currentTheme == ThemeOption.Custom}
+          onClick={handleThemeChange(ThemeOption.Custom)}
         >
           C
         </ThemeButton>

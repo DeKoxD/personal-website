@@ -17,9 +17,9 @@ export const ButtonGrid = styled.div`
 `;
 
 export const ThemeButton = styled(Button)`
-  font-size: 20px;
-  width: 20px;
-  height: 20px;
+  font-size: 30px;
+  width: 30px;
+  height: 30px;
 `;
 
 export const CustomColorSelector = styled.div`
