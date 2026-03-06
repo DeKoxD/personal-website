@@ -1,4 +1,5 @@
 import { FramedDiv } from "@/style/framedComponents";
+import { Sizes } from "@/utilities/constants/Layout";
 import { styled } from "@linaria/react";
 import Button from "../Button";
 
@@ -16,7 +17,8 @@ interface ContentProps {
 
 export const Content = styled(FramedDiv)<ContentProps>`
   position: fixed;
-  max-width: ${(props) => (props.fullWidth ? "100%" : "1000px")};
+  max-width: ${(props) =>
+    props.fullWidth ? "100%" : Sizes.BodySectionMaxWidth};
   width: 100%;
   min-height: 100dvh;
   height: 100dvh;
@@ -42,7 +44,7 @@ export const Title = styled.span`
 `;
 
 export const HiddenLetters = styled.span`
-  @media (max-width: 300px) {
+  @media (max-width: 400px) {
     display: none;
   }
 `;
@@ -70,9 +72,23 @@ export const Main = styled.main`
 `;
 
 export const OptionButton = styled(Button)`
+  --stroke-w: 10px;
   font-size: 30px;
   width: 30px;
   height: 30px;
+  padding: 3px;
+  & > * {
+    height: 100%;
+  }
+  &:hover * {
+    stroke-width: calc(var(--stroke-w) * 2);
+  }
+`;
+
+export const FullscreenButton = styled(OptionButton)`
+  @media (max-width: ${Sizes.BodySectionMaxWidth}) {
+    display: none;
+  }
 `;
 
 export const MiddleSection = styled.section`
@@ -82,4 +98,13 @@ export const MiddleSection = styled.section`
   flex-direction: row;
   gap: 5px;
   overflow: hidden;
+  @media (max-width: ${Sizes.MobileMaxWidth}) {
+    flex-direction: column;
+  }
+`;
+
+export const ButtonBar = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
 `;

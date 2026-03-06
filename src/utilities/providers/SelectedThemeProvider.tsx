@@ -1,8 +1,8 @@
 import { ThemeContext } from "@/utilities/contexts/ThemeContext";
 import { LocalStorageKey } from "@/utilities/enums/LocalStorageKeys";
 import { useLocalStorage } from "@/utilities/hooks/LocalStorageHook";
-import { ColorScheme, DefaultTheme, getTheme } from "@/utilities/Theme";
-import { useEffect, useState } from "react";
+import { DefaultTheme, getTheme } from "@/utilities/Theme";
+import { useCallback, useEffect } from "react";
 import { ThemeOption } from "../enums/ThemeOption";
 
 export interface Props extends React.PropsWithChildren {
@@ -24,25 +24,8 @@ const SelectedThemeProvider: React.FC<Props> = ({
   const [customTheme, setCustomTheme] = useLocalStorage<
     DefaultTheme | undefined
   >(LocalStorageKey.CustomTheme, defaultCustomTheme);
-  const [preferredColorScheme, setPreferredColorScheme] = useState<ColorScheme>(
-    ColorScheme.DARK,
-  );
 
-  useEffect(() => {
-    const mql = window.matchMedia("(prefers-color-scheme: light)");
-
-    function eventListener(e: MediaQueryListEvent) {
-      setPreferredColorScheme(e.matches ? ColorScheme.LIGHT : ColorScheme.DARK);
-    }
-
-    mql.addEventListener("change", eventListener);
-
-    return () => {
-      mql.removeEventListener("change", eventListener);
-    };
-  }, []);
-
-  useEffect(() => {
+  const applyTheme = useCallback(() => {
     onChange?.(theme, customTheme);
     const { primaryColor, secondaryColor } = getTheme(theme, customTheme);
     document.documentElement.style.setProperty("--primary-color", primaryColor);
@@ -50,7 +33,23 @@ const SelectedThemeProvider: React.FC<Props> = ({
       "--secondary-color",
       secondaryColor,
     );
-  }, [theme, customTheme, onChange, preferredColorScheme]);
+  }, [customTheme, onChange, theme]);
+
+  useEffect(() => {
+    const mql = window.matchMedia("(prefers-color-scheme: light)");
+
+    function eventListener() {
+      applyTheme();
+    }
+
+    mql.addEventListener("change", eventListener);
+
+    return () => {
+      mql.removeEventListener("change", eventListener);
+    };
+  }, [applyTheme]);
+
+  useEffect(applyTheme, [applyTheme]);
 
   return (
     <ThemeContext.Provider

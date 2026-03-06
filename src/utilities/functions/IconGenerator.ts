@@ -1,5 +1,5 @@
 import { DefaultTheme, getTheme } from "@/utilities/Theme";
-import { ThemeOption } from "./enums/ThemeOption";
+import { ThemeOption } from "../enums/ThemeOption";
 
 export function createIcon(
   text: string,

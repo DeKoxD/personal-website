@@ -15,7 +15,7 @@ export interface Props extends PropsWithChildren {
 }
 
 const ToastNotificationProvider: React.FC<Props> = ({
-  expiration = 3000, // TODO make it dynamic, depending on the content length
+  expiration = 3000,
   children,
 }): React.ReactElement => {
   const [notifications, setNotifications] = useState<ToastNotification[]>([]);
@@ -29,7 +29,7 @@ const ToastNotificationProvider: React.FC<Props> = ({
     const timeoutId = setTimeout(() => {
       const now = new Date();
       setNotifications((value) =>
-        value.filter((item) => item.id != id && item.expiresAt < now)
+        value.filter((item) => item.id != id && item.expiresAt < now),
       );
     }, expiration);
     const notification: ToastNotification = {

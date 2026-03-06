@@ -1,6 +1,6 @@
 import MainRouter from "@/routes/MainRouter";
 import { globalStyles } from "@/style/globalStyles";
-import { setCustomIcon } from "@/utilities/IconGenerator";
+import { setCustomIcon } from "@/utilities/functions/IconGenerator";
 import SelectedThemeProvider from "@/utilities/providers/SelectedThemeProvider";
 import ToastNotificationProvider from "@/utilities/providers/ToastNotificationProvider";
 import { DefaultTheme } from "@/utilities/Theme";

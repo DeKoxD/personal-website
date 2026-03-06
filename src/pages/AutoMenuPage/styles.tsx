@@ -6,3 +6,7 @@ export const Content = styled(FramedDiv)`
   align-items: center;
   justify-content: center;
 `;
+
+export const List = styled.ul``;
+
+export const ListItem = styled.li``;

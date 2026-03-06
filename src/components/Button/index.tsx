@@ -11,6 +11,12 @@ const Button = styled.button`
   align-items: center;
   box-sizing: border-box;
   font-weight: 600;
+
+  * {
+    fill: var(--secondary-color);
+    stroke: var(--secondary-color);
+  }
+
   :focus {
     outline: revert;
   }
@@ -18,10 +24,18 @@ const Button = styled.button`
     font-weight: 900;
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    * {
+      fill: var(--primary-color);
+      stroke: var(--primary-color);
+    }
   }
   &[aria-checked="true"] {
     background-color: var(--secondary-color);
     color: var(--primary-color);
+    * {
+      fill: var(--primary-color);
+      stroke: var(--primary-color);
+    }
   }
   &:active {
     border: 2px solid var(--primary-color);

@@ -39,6 +39,8 @@ export function getTheme(
       return darkTheme;
     case ThemeOption.Custom:
       return customTheme || getTheme(ThemeOption.System);
+    default:
+      return getTheme(ThemeOption.System);
   }
 }
 

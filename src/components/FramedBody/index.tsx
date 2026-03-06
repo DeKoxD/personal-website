@@ -1,12 +1,20 @@
-import Sidebar from "@/components/Sidebar";
+import DesktopFooterIcon from "@/assets/icons/desktop-footer-icon.svg?react";
+import DesktopFullscreenIcon from "@/assets/icons/desktop-fullscreen-icon.svg?react";
+import DesktopSidebarIcon from "@/assets/icons/desktop-sidebar-icon.svg?react";
+import PhoneFooterIcon from "@/assets/icons/phone-footer-icon.svg?react";
+import PhoneMenubarIcon from "@/assets/icons/phone-menubar-icon.svg?react";
+import Navbar from "@/components/Navbar";
 import ThemeSelector from "@/components/ThemeSelector";
+import { hideOnMobile, showOnMobile } from "@/style/responsiveness";
 import { LocalStorageKey } from "@/utilities/enums/LocalStorageKeys";
 import { useLocalStorage } from "@/utilities/hooks/LocalStorageHook";
 import { FC, PropsWithChildren } from "react";
 import {
   AltLetters,
+  ButtonBar,
   Content,
   Footer,
+  FullscreenButton,
   Header,
   HiddenLetters,
   Main,
@@ -33,30 +41,31 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
     <Wrapper>
       <Content fullWidth={fullWidth}>
         <Header>
-          <div style={{ display: "flex" }}>
+          <ButtonBar style={{ display: "flex" }}>
             <OptionButton
               role="switch"
               aria-checked={bottomMenuEnabled}
               onClick={() => setBottomMenuEnabled((state) => !state)}
             >
-              M
+              <DesktopFooterIcon className={hideOnMobile} />
+              <PhoneFooterIcon className={showOnMobile} />
             </OptionButton>
-
             <OptionButton
               role="switch"
               aria-checked={sidebarEnabled}
               onClick={() => setSidebarEnabled((state) => !state)}
             >
-              S
+              <DesktopSidebarIcon className={hideOnMobile} />
+              <PhoneMenubarIcon className={showOnMobile} />
             </OptionButton>
-            <OptionButton
+            <FullscreenButton
               role="switch"
               aria-checked={fullWidth}
               onClick={() => setFullWidth((state) => !state)}
             >
-              F
-            </OptionButton>
-          </div>
+              <DesktopFullscreenIcon />
+            </FullscreenButton>
+          </ButtonBar>
           <Title>
             A<HiddenLetters>NDRÉ </HiddenLetters>
             <AltLetters>P</AltLetters>
@@ -66,7 +75,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
           </Title>
         </Header>
         <MiddleSection>
-          {sidebarEnabled && <Sidebar></Sidebar>}
+          {sidebarEnabled && <Navbar></Navbar>}
 
           <Main>{children}</Main>
         </MiddleSection>
