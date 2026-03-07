@@ -29,7 +29,7 @@ export const Item = styled.div`
 
 export const ClearButton = styled(Button)`
   padding: 5px;
-  height: 15px;
-  width: 15px;
-  font-size: 15px;
+  height: 30px;
+  width: 30px;
+  font-size: 20px;
 `;

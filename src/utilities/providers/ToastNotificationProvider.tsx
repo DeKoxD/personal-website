@@ -1,6 +1,8 @@
 import ToastNotificationList from "@/components/ToastNotificationList";
 import { ToastNotificationContext } from "@/utilities/contexts/ToastNotificationContext";
 import { PropsWithChildren, useRef, useState } from "react";
+import { LocalStorageKey } from "../enums/LocalStorageKeys";
+import { useLocalStorage } from "../hooks/LocalStorageHook";
 
 export interface ToastNotification {
   id: number;
@@ -10,18 +12,22 @@ export interface ToastNotification {
   timeoutId: number;
 }
 
-export interface Props extends PropsWithChildren {
+export interface ToastNotificationProviderProps extends PropsWithChildren {
   expiration?: number;
 }
 
-const ToastNotificationProvider: React.FC<Props> = ({
+const ToastNotificationProvider: React.FC<ToastNotificationProviderProps> = ({
   expiration = 3000,
   children,
 }): React.ReactElement => {
   const [notifications, setNotifications] = useState<ToastNotification[]>([]);
+  const [notificationsEnabled, setNotificationsEnabled] =
+    useLocalStorage<boolean>(LocalStorageKey.NotificationsEnabled, true);
   const sequence = useRef(0);
 
   function newNotification(content: string) {
+    if (!notificationsEnabled) return;
+
     const id = sequence.current++;
     const timestamp = new Date();
     const expiresAt = new Date(Date.now() - expiration);
@@ -47,9 +53,19 @@ const ToastNotificationProvider: React.FC<Props> = ({
     oldNotifications.forEach(({ timeoutId }) => clearTimeout(timeoutId));
   }
 
+  function toggleNotifications() {
+    setNotificationsEnabled((state) => !state);
+  }
+
   return (
     <ToastNotificationContext.Provider
-      value={{ notifications, newNotification, clear }}
+      value={{
+        notifications,
+        newNotification,
+        clear,
+        notificationsEnabled,
+        toggleNotifications,
+      }}
     >
       <ToastNotificationList notifications={notifications} clear={clear} />
       {children}

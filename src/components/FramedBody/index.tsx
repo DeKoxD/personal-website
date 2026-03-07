@@ -1,6 +1,7 @@
 import DesktopFooterIcon from "@/assets/icons/desktop-footer-icon.svg?react";
 import DesktopFullscreenIcon from "@/assets/icons/desktop-fullscreen-icon.svg?react";
 import DesktopSidebarIcon from "@/assets/icons/desktop-sidebar-icon.svg?react";
+import NotificationIcon from "@/assets/icons/notification-icon.svg?react";
 import PhoneFooterIcon from "@/assets/icons/phone-footer-icon.svg?react";
 import PhoneMenubarIcon from "@/assets/icons/phone-menubar-icon.svg?react";
 import Navbar from "@/components/Navbar";
@@ -8,6 +9,7 @@ import ThemeSelector from "@/components/ThemeSelector";
 import { hideOnMobile, showOnMobile } from "@/style/responsiveness";
 import { LocalStorageKey } from "@/utilities/enums/LocalStorageKeys";
 import { useLocalStorage } from "@/utilities/hooks/LocalStorageHook";
+import { useToastNotification } from "@/utilities/hooks/ToastNotificationHook";
 import { FC, PropsWithChildren } from "react";
 import {
   AltLetters,
@@ -24,7 +26,19 @@ import {
   Wrapper,
 } from "./styles";
 
+enum Messages {
+  NavbarEnabled = "Navigation Bar Enabled",
+  NavbarDisabled = "Navigation Bar Disabled",
+  FooterEnabled = "Bottom Bar Enabled",
+  FooterDisabled = "Bottom Bar Disabled",
+  FullscreenEnabled = "Fullscreen Enabled",
+  FullscreenDisabled = "Fullscreen Disabled",
+}
+
 const FramedBody: FC<PropsWithChildren> = ({ children }) => {
+  const { newNotification, notificationsEnabled, toggleNotifications } =
+    useToastNotification();
+
   const [bottomMenuEnabled, setBottomMenuEnabled] = useLocalStorage(
     LocalStorageKey.BottomMenuEnabled,
     true,
@@ -45,7 +59,15 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
             <OptionButton
               role="switch"
               aria-checked={bottomMenuEnabled}
-              onClick={() => setBottomMenuEnabled((state) => !state)}
+              onClick={() => {
+                newNotification(
+                  bottomMenuEnabled
+                    ? Messages.FooterDisabled
+                    : Messages.FooterEnabled,
+                );
+
+                setBottomMenuEnabled((state) => !state);
+              }}
             >
               <DesktopFooterIcon className={hideOnMobile} />
               <PhoneFooterIcon className={showOnMobile} />
@@ -53,7 +75,15 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
             <OptionButton
               role="switch"
               aria-checked={sidebarEnabled}
-              onClick={() => setSidebarEnabled((state) => !state)}
+              onClick={() => {
+                newNotification(
+                  sidebarEnabled
+                    ? Messages.NavbarDisabled
+                    : Messages.NavbarEnabled,
+                );
+
+                setSidebarEnabled((state) => !state);
+              }}
             >
               <DesktopSidebarIcon className={hideOnMobile} />
               <PhoneMenubarIcon className={showOnMobile} />
@@ -61,7 +91,15 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
             <FullscreenButton
               role="switch"
               aria-checked={fullWidth}
-              onClick={() => setFullWidth((state) => !state)}
+              onClick={() => {
+                newNotification(
+                  fullWidth
+                    ? Messages.FullscreenDisabled
+                    : Messages.FullscreenEnabled,
+                );
+
+                setFullWidth((state) => !state);
+              }}
             >
               <DesktopFullscreenIcon />
             </FullscreenButton>
@@ -81,6 +119,13 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
         </MiddleSection>
         {bottomMenuEnabled && (
           <Footer>
+            <OptionButton
+              role="switch"
+              aria-checked={notificationsEnabled}
+              onClick={toggleNotifications}
+            >
+              <NotificationIcon />
+            </OptionButton>
             <ThemeSelector />
           </Footer>
         )}

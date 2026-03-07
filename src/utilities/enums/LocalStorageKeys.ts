@@ -4,4 +4,5 @@ export enum LocalStorageKey {
   BottomMenuEnabled = "BOTTOM_MENU_ENABLED",
   SidebarEnabled = "SIDEBAR_ENABLED",
   FullWidth = "FULL_WIDTH",
+  NotificationsEnabled = "NOTIFICATIONS_ENABLED",
 }

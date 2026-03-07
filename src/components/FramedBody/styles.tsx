@@ -62,7 +62,7 @@ export const Footer = styled.footer`
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: right;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
