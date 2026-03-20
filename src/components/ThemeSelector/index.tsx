@@ -1,3 +1,7 @@
+import ThemeCustomIcon from "@/assets/icons/theme-custom-icon.svg?react";
+import ThemeDarkIcon from "@/assets/icons/theme-dark-icon.svg?react";
+import ThemeLightIcon from "@/assets/icons/theme-light-icon.svg?react";
+import ThemeSystemIcon from "@/assets/icons/theme-system-icon.svg?react";
 import { ThemeOption } from "@/utilities/enums/ThemeOption";
 import { useSelectedTheme } from "@/utilities/hooks/SelectedThemeHook";
 import { useToastNotification } from "@/utilities/hooks/ToastNotificationHook";
@@ -76,28 +80,28 @@ function ThemeSelector() {
           aria-checked={currentTheme == ThemeOption.Dark}
           onClick={handleThemeChange(ThemeOption.Dark)}
         >
-          D
+          <ThemeDarkIcon />
         </ThemeButton>
         <ThemeButton
           role="radio"
           aria-checked={currentTheme == ThemeOption.Light}
           onClick={handleThemeChange(ThemeOption.Light)}
         >
-          L
+          <ThemeLightIcon />
         </ThemeButton>
         <ThemeButton
           role="radio"
           aria-checked={currentTheme == ThemeOption.System}
           onClick={handleThemeChange(ThemeOption.System)}
         >
-          S
+          <ThemeSystemIcon />
         </ThemeButton>
         <ThemeButton
           role="radio"
           aria-checked={currentTheme == ThemeOption.Custom}
           onClick={handleThemeChange(ThemeOption.Custom)}
         >
-          C
+          <ThemeCustomIcon />
         </ThemeButton>
       </ButtonGrid>
     </Wrapper>

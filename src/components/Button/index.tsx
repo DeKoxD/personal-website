@@ -1,6 +1,8 @@
 import { styled } from "@linaria/react";
 
 const Button = styled.button`
+  --stroke-w: 10px;
+
   all: unset;
   pointer-events: all;
   background-color: var(--primary-color);
@@ -17,16 +19,23 @@ const Button = styled.button`
     stroke: var(--secondary-color);
   }
 
+  & > * {
+    height: 100%;
+  }
+
   :focus {
     outline: revert;
   }
-  &:hover {
-    font-weight: 900;
-    background-color: var(--secondary-color);
-    color: var(--primary-color);
-    * {
-      fill: var(--primary-color);
-      stroke: var(--primary-color);
+  @media (hover: hover) {
+    &:hover {
+      font-weight: 900;
+      background-color: var(--secondary-color);
+      color: var(--primary-color);
+      * {
+        fill: var(--primary-color);
+        stroke: var(--primary-color);
+        stroke-width: calc(var(--stroke-w) * 2);
+      }
     }
   }
   &[aria-checked="true"] {

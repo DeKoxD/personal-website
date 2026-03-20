@@ -72,17 +72,10 @@ export const Main = styled.main`
 `;
 
 export const OptionButton = styled(Button)`
-  --stroke-w: 10px;
   font-size: 30px;
   width: 30px;
   height: 30px;
   padding: 3px;
-  & > * {
-    height: 100%;
-  }
-  &:hover * {
-    stroke-width: calc(var(--stroke-w) * 2);
-  }
 `;
 
 export const FullscreenButton = styled(OptionButton)`
