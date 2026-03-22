@@ -45,7 +45,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
   );
   const [sidebarEnabled, setSidebarEnabled] = useLocalStorage(
     LocalStorageKey.SidebarEnabled,
-    true,
+    false,
   );
   const [fullWidth, setFullWidth] = useLocalStorage(
     LocalStorageKey.FullWidth,

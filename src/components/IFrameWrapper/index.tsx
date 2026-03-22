@@ -7,6 +7,7 @@ const IFrameWrapper: FC<IframeHTMLAttributes<HTMLIFrameElement>> = (props) => {
       <div
         style={{
           height: "100%",
+          width: "100%",
           maxHeight: props.height,
           maxWidth: props.width,
         }}

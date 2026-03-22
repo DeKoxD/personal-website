@@ -6,7 +6,6 @@ import { generateNavRouteKey } from "./functions/NavRouteUtils";
 
 function parseRoute(navRoute: NavRoute, notFoundComponent: FC) {
   const key = generateNavRouteKey(navRoute);
-  console.log(key, navRoute);
 
   if (navRoute.nestedRoutes?.length) {
     return (
@@ -22,7 +21,11 @@ function parseRoute(navRoute: NavRoute, notFoundComponent: FC) {
           ) : (
             navRoute.nestedRoutes?.length && (
               <Route key={key} path="/">
-                <AutoMenuPage navRoutes={navRoute.nestedRoutes} />
+                <AutoMenuPage
+                  title={navRoute.title}
+                  description={navRoute.description}
+                  navRoutes={navRoute.nestedRoutes}
+                />
               </Route>
             )
           )}
