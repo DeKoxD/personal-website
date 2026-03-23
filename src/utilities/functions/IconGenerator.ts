@@ -7,7 +7,7 @@ export function createIcon(
   secondaryColor: string,
 ): string {
   const ctx = document.createElement("canvas").getContext("2d");
-  if (ctx == null) throw Error("Canvas context not found");
+  if (ctx === null) throw Error("Canvas context not found");
   const canvas = ctx.canvas;
   const font = '900 100px "Source Code Pro"';
   ctx.font = font;

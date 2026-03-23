@@ -74,31 +74,35 @@ function ThemeSelector() {
         </CustomColorSelector>
       )}
       <span>Theme:</span>
-      <ButtonGrid>
+      <ButtonGrid role="radiogroup" aria-label="Theme Selector">
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.Dark}
+          aria-label="Enable Dark Theme"
+          aria-checked={currentTheme === ThemeOption.Dark}
           onClick={handleThemeChange(ThemeOption.Dark)}
         >
           <ThemeDarkIcon />
         </ThemeButton>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.Light}
+          aria-label="Enable Light Theme"
+          aria-checked={currentTheme === ThemeOption.Light}
           onClick={handleThemeChange(ThemeOption.Light)}
         >
           <ThemeLightIcon />
         </ThemeButton>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.System}
+          aria-label="Enable System Theme"
+          aria-checked={currentTheme === ThemeOption.System}
           onClick={handleThemeChange(ThemeOption.System)}
         >
           <ThemeSystemIcon />
         </ThemeButton>
         <ThemeButton
           role="radio"
-          aria-checked={currentTheme == ThemeOption.Custom}
+          aria-label="Enable Custom Theme"
+          aria-checked={currentTheme === ThemeOption.Custom}
           onClick={handleThemeChange(ThemeOption.Custom)}
         >
           <ThemeCustomIcon />

@@ -43,8 +43,8 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
     LocalStorageKey.BottomMenuEnabled,
     true,
   );
-  const [sidebarEnabled, setSidebarEnabled] = useLocalStorage(
-    LocalStorageKey.SidebarEnabled,
+  const [navbarEnabled, setNavbarEnabled] = useLocalStorage(
+    LocalStorageKey.NavbarEnabled,
     false,
   );
   const [fullWidth, setFullWidth] = useLocalStorage(
@@ -58,6 +58,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
           <ButtonBar style={{ display: "flex" }}>
             <OptionButton
               role="switch"
+              aria-label="Toggle Bottom Bar"
               aria-checked={bottomMenuEnabled}
               onClick={() => {
                 newNotification(
@@ -74,15 +75,16 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
             </OptionButton>
             <OptionButton
               role="switch"
-              aria-checked={sidebarEnabled}
+              aria-label="Toggle Navigation Bar"
+              aria-checked={navbarEnabled}
               onClick={() => {
                 newNotification(
-                  sidebarEnabled
+                  navbarEnabled
                     ? Messages.NavbarDisabled
                     : Messages.NavbarEnabled,
                 );
 
-                setSidebarEnabled((state) => !state);
+                setNavbarEnabled((state) => !state);
               }}
             >
               <DesktopSidebarIcon className={hideOnMobile} />
@@ -90,6 +92,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
             </OptionButton>
             <FullscreenButton
               role="switch"
+              aria-label="Toggle Fullscreen mode"
               aria-checked={fullWidth}
               onClick={() => {
                 newNotification(
@@ -113,7 +116,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
           </Title>
         </Header>
         <MiddleSection>
-          {sidebarEnabled && <Navbar></Navbar>}
+          {navbarEnabled && <Navbar></Navbar>}
 
           <Main>{children}</Main>
         </MiddleSection>

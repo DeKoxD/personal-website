@@ -2,8 +2,12 @@ import { ThemeContext } from "@/utilities/contexts/ThemeContext";
 import { LocalStorageKey } from "@/utilities/enums/LocalStorageKeys";
 import { useLocalStorage } from "@/utilities/hooks/LocalStorageHook";
 import { DefaultTheme, getTheme } from "@/utilities/Theme";
-import { useCallback, useEffect } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { ThemeOption } from "../enums/ThemeOption";
+
+function isValidColor(color: string): boolean {
+  return !!color.match(/^#([0-9a-fA-F]{3}|[0-9a-fA-F]{6})$/);
+}
 
 export interface Props extends React.PropsWithChildren {
   defaultValue?: ThemeOption;
@@ -14,16 +18,41 @@ export interface Props extends React.PropsWithChildren {
 const SelectedThemeProvider: React.FC<Props> = ({
   children,
   defaultValue = ThemeOption.System,
-  defaultCustomTheme,
+  defaultCustomTheme = getTheme(ThemeOption.System),
   onChange,
 }): React.ReactElement => {
   const [theme, setTheme] = useLocalStorage<ThemeOption>(
     LocalStorageKey.Theme,
     defaultValue,
   );
-  const [customTheme, setCustomTheme] = useLocalStorage<
-    DefaultTheme | undefined
-  >(LocalStorageKey.CustomTheme, defaultCustomTheme);
+
+  const [customPrimaryColor, setCustomPrimaryColor] = useLocalStorage<
+    string | undefined
+  >(LocalStorageKey.CustomPrimaryColor, defaultCustomTheme?.primaryColor);
+
+  const [customSecondaryColor, setCustomSecondaryColor] = useLocalStorage<
+    string | undefined
+  >(LocalStorageKey.CustomSecondaryColor, defaultCustomTheme?.secondaryColor);
+
+  const customTheme = useMemo<DefaultTheme | undefined>(() => {
+    if (customPrimaryColor && customSecondaryColor) {
+      return {
+        primaryColor: customPrimaryColor,
+        secondaryColor: customSecondaryColor,
+      };
+    }
+    return defaultCustomTheme;
+  }, [customPrimaryColor, customSecondaryColor, defaultCustomTheme]);
+
+  const setCustomTheme = useCallback(
+    ({ primaryColor, secondaryColor }: DefaultTheme) => {
+      if (isValidColor(primaryColor) && isValidColor(secondaryColor)) {
+        setCustomPrimaryColor(primaryColor);
+        setCustomSecondaryColor(secondaryColor);
+      }
+    },
+    [setCustomPrimaryColor, setCustomSecondaryColor],
+  );
 
   const applyTheme = useCallback(() => {
     onChange?.(theme, customTheme);
