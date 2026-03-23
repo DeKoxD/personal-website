@@ -1,12 +1,13 @@
-import { DefaultTheme, getTheme, ThemeOption } from "@/utilities/Theme";
+import { DefaultTheme, getTheme } from "@/utilities/Theme";
+import { ThemeOption } from "../enums/ThemeOption";
 
 export function createIcon(
   text: string,
   primaryColor: string,
-  secondaryColor: string
+  secondaryColor: string,
 ): string {
   const ctx = document.createElement("canvas").getContext("2d");
-  if (ctx == null) throw Error("Canvas context not found");
+  if (ctx === null) throw Error("Canvas context not found");
   const canvas = ctx.canvas;
   const font = '900 100px "Source Code Pro"';
   ctx.font = font;
@@ -38,7 +39,7 @@ export function setCustomIcon(theme: ThemeOption, customTheme?: DefaultTheme) {
     link.href = createIcon(
       "AP",
       themeObject.primaryColor,
-      themeObject.secondaryColor
+      themeObject.secondaryColor,
     );
   });
 }

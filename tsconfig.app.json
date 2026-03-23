@@ -26,7 +26,9 @@
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
-    }
+    },
+    /* Types */
+    "types": ["vite/client", "vite-plugin-svgr/client"]
   },
   "include": ["src"]
 }

@@ -1,4 +1,5 @@
 import { FramedSection } from "@/style/framedComponents";
+import { Sizes } from "@/utilities/constants/Layout";
 import { styled } from "@linaria/react";
 
 export const Content = styled.div`
@@ -7,7 +8,7 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 5px;
-  @media (max-width: 600px) {
+  @media (max-width: ${Sizes.MobileMaxWidth}) {
     height: 100%;
     grid-template-columns: auto;
     grid-template-rows: auto 1fr;

@@ -1,15 +1,12 @@
 import FramedBody from "@/components/FramedBody";
-import Homepage from "@/pages/Homepage";
 import NotFound from "@/pages/NotFound";
 import { FC } from "react";
-import { Route, Switch } from "wouter";
+import NavRouteParser from "../utilities/NavRouteParser";
+import { navRoutes } from "./data";
 
 const FramedRouter: FC = () => (
   <FramedBody>
-    <Switch>
-      <Route path="/" component={Homepage} />
-      <Route component={NotFound} />
-    </Switch>
+    <NavRouteParser navRoutes={navRoutes} notFoundComponent={NotFound} />
   </FramedBody>
 );
 

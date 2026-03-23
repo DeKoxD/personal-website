@@ -12,6 +12,7 @@ export const globalStyles = css`
       font-family: "Source Code Pro", serif;
       font-optical-sizing: auto;
       font-style: normal;
+      line-height: 1.5;
     }
 
     html,
