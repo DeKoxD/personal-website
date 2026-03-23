@@ -116,7 +116,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
           </Title>
         </Header>
         <MiddleSection>
-          {navbarEnabled && <Navbar></Navbar>}
+          {navbarEnabled && <Navbar />}
 
           <Main>{children}</Main>
         </MiddleSection>

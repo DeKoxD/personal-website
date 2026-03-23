@@ -9,6 +9,7 @@ export const Container = styled(FramedNav)`
   flex-wrap: nowrap;
 
   @media (max-width: ${Sizes.MobileMaxWidth}) {
+    height: fit-content;
     max-width: 100%;
     max-height: 200px;
   }
