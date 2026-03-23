@@ -49,7 +49,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
   );
   const [fullWidth, setFullWidth] = useLocalStorage(
     LocalStorageKey.FullWidth,
-    true,
+    false,
   );
   return (
     <Wrapper>
@@ -124,6 +124,7 @@ const FramedBody: FC<PropsWithChildren> = ({ children }) => {
           <Footer>
             <OptionButton
               role="switch"
+              aria-label="Toggle Notifications"
               aria-checked={notificationsEnabled}
               onClick={toggleNotifications}
             >

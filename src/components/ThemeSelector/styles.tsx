@@ -17,7 +17,6 @@ export const ButtonGrid = styled.div`
 `;
 
 export const ThemeButton = styled(Button)`
-  font-size: 30px;
   width: 30px;
   height: 30px;
   padding: 3px;

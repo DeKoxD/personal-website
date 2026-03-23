@@ -72,7 +72,6 @@ export const Main = styled.main`
 `;
 
 export const OptionButton = styled(Button)`
-  font-size: 30px;
   width: 30px;
   height: 30px;
   padding: 3px;
